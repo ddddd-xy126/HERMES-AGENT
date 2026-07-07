@@ -1,0 +1,46 @@
+/* =========================================================
+   Cyberpunk UI · Glitch 文字效果
+   用法（必须同时设置 data-text 属性，内容与文字一致）：
+     <h1 class="glitch" data-text="HERMES">HERMES</h1>
+   仅用于关键标题/状态，不要全页都用。
+   ========================================================= */
+
+.glitch {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: var(--neon-magenta);
+  transform: translate(2px, 0);
+  clip-path: inset(0 0 55% 0);
+  text-shadow: 0 0 8px var(--neon-magenta);
+  mix-blend-mode: screen;
+}
+
+.glitch::after {
+  color: var(--neon-cyan);
+  transform: translate(-2px, 0);
+  clip-path: inset(55% 0 0 0);
+  text-shadow: 0 0 8px var(--neon-cyan);
+  mix-blend-mode: screen;
+}
+
+/* 持续抖动版（慎用） */
+.glitch--active::before { animation: glitch-shift 2.4s steps(8) infinite; }
+.glitch--active::after  { animation: glitch-shift 2.8s steps(8) infinite reverse; }

@@ -1,0 +1,56 @@
+/* =========================================================
+   Cyberpunk UI · Animations
+   全部使用 prefers-reduced-motion 兜底（在 tokens.css 里统一处理）
+   ========================================================= */
+
+/* 霓虹脉冲：按钮/状态点呼吸式辉光 */
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 var(--glow-strength) var(--neon-cyan),
+                inset 0 0 var(--glow-strength) rgba(0, 240, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 var(--glow-strength-strong) var(--neon-cyan),
+                inset 0 0 var(--glow-strength-strong) rgba(0, 240, 255, 0.35);
+  }
+}
+
+/* 终端光标闪烁 */
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* 扫描线缓慢下移 */
+@keyframes scan-move {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Glitch 抖动（短促，单次触发） */
+@keyframes glitch-shift {
+  0%, 100% { transform: translate(0, 0); }
+  20%      { transform: translate(-2px, 1px); }
+  40%      { transform: translate(2px, -1px); }
+  60%      { transform: translate(-1px, 2px); }
+  80%      { transform: translate(1px, -2px); }
+}
+
+/* 数据流字符向下滚动（用于装饰性背景列） */
+@keyframes data-stream {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* 进度条扫光 */
+@keyframes progress-sweep {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* 工具类：直接挂在元素上即可 */
+.anim-pulse  { animation: neon-pulse 2.4s ease-in-out infinite; }
+.anim-blink  { animation: cursor-blink 1s step-end infinite; }
+.anim-glitch:hover { animation: glitch-shift 0.25s steps(5) 1; }

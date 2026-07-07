@@ -1,0 +1,109 @@
+/* =========================================================
+   Cyberpunk UI · Buttons
+   用法：
+     <button class="cyber-btn">EXECUTE</button>
+     <button class="cyber-btn cyber-btn--danger">ABORT</button>
+     <button class="cyber-btn cyber-btn--ghost">CANCEL</button>
+   ========================================================= */
+
+.cyber-btn {
+  --_color: var(--neon-cyan);
+  --_glow:  var(--glow-cyan);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  padding: 10px 22px;
+  min-height: 40px;
+
+  background: transparent;
+  color: var(--_color);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px currentColor;
+
+  border: 1px solid var(--_color);
+  /* 切角：左上 + 右下 */
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--clip-md)) 0,
+    100% var(--clip-md),
+    100% 100%,
+    var(--clip-md) 100%,
+    0 calc(100% - var(--clip-md))
+  );
+
+  box-shadow: var(--_glow);
+  cursor: pointer;
+  transition: transform 0.15s var(--ease-out),
+              background 0.2s var(--ease-out),
+              color 0.2s var(--ease-out);
+}
+
+.cyber-btn::before {
+  /* 左侧装饰条 */
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--_color);
+  box-shadow: 0 0 8px var(--_color);
+}
+
+.cyber-btn:hover {
+  background: var(--_color);
+  color: var(--text-on-neon);
+  text-shadow: none;
+  transform: translateY(-1px);
+}
+
+.cyber-btn:active {
+  transform: translateY(0);
+  filter: brightness(0.85);
+}
+
+.cyber-btn:disabled,
+.cyber-btn[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+/* ---------- 变体 ---------- */
+.cyber-btn--danger {
+  --_color: var(--neon-magenta);
+  --_glow:  var(--glow-magenta);
+}
+
+.cyber-btn--ghost {
+  --_glow: none;
+  border-color: var(--border-subtle);
+  color: var(--text-secondary);
+  text-shadow: none;
+}
+.cyber-btn--ghost:hover {
+  background: var(--bg-elevated);
+  color: var(--neon-cyan);
+}
+
+/* 小尺寸 */
+.cyber-btn--sm {
+  padding: 6px 14px;
+  min-height: 28px;
+  font-size: 11px;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--clip-sm)) 0,
+    100% var(--clip-sm),
+    100% 100%,
+    var(--clip-sm) 100%,
+    0 calc(100% - var(--clip-sm))
+  );
+}

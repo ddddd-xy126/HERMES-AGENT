@@ -1,0 +1,106 @@
+/* =========================================================
+   Cyberpunk UI · Design Tokens
+   所有组件必须引用这里的 CSS 变量，禁止硬编码颜色/尺寸
+   ========================================================= */
+
+:root {
+  /* ---------- 背景层 ---------- */
+  --bg-base:       #05060a;   /* 页面最底层 */
+  --bg-panel:      #0d0f1a;   /* 卡片/面板 */
+  --bg-elevated:   #141728;   /* 悬浮/激活态面板 */
+  --bg-grid:       rgba(0, 240, 255, 0.06);  /* 网格线 */
+
+  /* ---------- 霓虹强调色（最多用 2 个）---------- */
+  --neon-cyan:     #00f0ff;   /* 主色：信息/默认/链接 */
+  --neon-magenta:  #ff2a6d;   /* 辅色：警告/危险/CTA */
+
+  /* ---------- 备用色（小面积使用）---------- */
+  --neon-purple:   #bd00ff;
+  --neon-green:    #39ff14;
+  --neon-yellow:   #f9f002;
+
+  /* ---------- 文字 ---------- */
+  --text-primary:   #e6f1ff;
+  --text-secondary: #8a93b8;
+  --text-muted:     #4a5070;
+  --text-on-neon:   #05060a;  /* 霓虹色背景上的深色文字 */
+
+  /* ---------- 边框 ---------- */
+  --border-subtle:  rgba(0, 240, 255, 0.15);
+  --border-strong:  rgba(0, 240, 255, 0.5);
+  --border-danger:  rgba(255, 42, 109, 0.6);
+
+  /* ---------- 字体 ---------- */
+  --font-mono:    'JetBrains Mono', 'Fira Code', 'Share Tech Mono', Consolas, monospace;
+  --font-display: 'Orbitron', 'Rajdhani', 'JetBrains Mono', sans-serif;
+  --font-cn:      'PingFang SC', 'Microsoft YaHei', 'Source Han Sans', sans-serif;
+
+  /* ---------- 切角尺寸（用于 clip-path）---------- */
+  --clip-sm: 6px;
+  --clip-md: 12px;
+  --clip-lg: 20px;
+
+  /* ---------- 辉光强度（用户说"太刺眼"时降低这两个）---------- */
+  --glow-strength:  10px;
+  --glow-strength-strong: 20px;
+
+  /* ---------- 阴影/辉光 ---------- */
+  --glow-cyan:    0 0 var(--glow-strength) var(--neon-cyan),
+                  inset 0 0 var(--glow-strength) rgba(0, 240, 255, 0.15);
+  --glow-magenta: 0 0 var(--glow-strength) var(--neon-magenta),
+                  inset 0 0 var(--glow-strength) rgba(255, 42, 109, 0.15);
+  --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.6);
+
+  /* ---------- 间距 ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ---------- 缓动 ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- 全局基础样式 ---------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-cn), var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  /* 默认带一层透视网格背景，可移除 */
+  background-image:
+    linear-gradient(var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--neon-cyan);
+  color: var(--text-on-neon);
+}
+
+a {
+  color: var(--neon-cyan);
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
+}
+a:hover { text-decoration: underline; }
+
+/* 减弱动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

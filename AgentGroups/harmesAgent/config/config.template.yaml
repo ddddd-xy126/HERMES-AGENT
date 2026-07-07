@@ -1,0 +1,37 @@
+# ===== Hermes-Agent config.yaml 模板（N1nKey 中转）=====
+# 安装完成后将本文件内容复制到 ~/.hermes/config.yaml
+
+# 默认模型（与 .env 中 LLM_MODEL 一致）
+model: "claude-opus-4-7"
+
+# 上下文压缩
+compression:
+  enabled: true
+  trigger_threshold: 0.50
+
+# 辅助模型（视觉/快速任务，需确认 N1nKey 是否提供）
+auxiliary:
+  vision_model: "claude-opus-4-7"
+  quick_model: "claude-opus-4-7"
+
+# 终端后端（local / docker / ssh）；新手用 local 即可
+terminal:
+  backend: "local"
+
+cwd: "."
+
+# 记忆系统
+memory:
+  enabled: true
+  persist: true
+  retention_days: 30
+
+# 显示
+display:
+  skin: "default"
+  compact: false
+  streaming: true
+
+# TTS 默认关闭
+tts:
+  enabled: false

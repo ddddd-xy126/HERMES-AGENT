@@ -1,0 +1,111 @@
+/* =========================================================
+   Cyberpunk UI · Panels (HUD 卡片)
+   用法：
+     <section class="cyber-panel">
+       <header class="cyber-panel__header">
+         <span class="cyber-panel__id">SYS://STATUS_0x4F2A</span>
+         <h3 class="cyber-panel__title">系统状态</h3>
+       </header>
+       <div class="cyber-panel__body">...</div>
+     </section>
+   ========================================================= */
+
+.cyber-panel {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  /* 右上 + 左下双切角 */
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--clip-lg)) 0,
+    100% var(--clip-lg),
+    100% 100%,
+    var(--clip-lg) 100%,
+    0 calc(100% - var(--clip-lg))
+  );
+  box-shadow: var(--shadow-panel);
+  padding: var(--space-6);
+  color: var(--text-primary);
+}
+
+/* 顶部细线高光 */
+.cyber-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--neon-cyan) 20%,
+    var(--neon-cyan) 80%,
+    transparent);
+  opacity: 0.6;
+}
+
+.cyber-panel__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.cyber-panel__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+}
+
+.cyber-panel__id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.cyber-panel__body {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* 危险/警告变体 */
+.cyber-panel--danger {
+  border-color: var(--border-danger);
+}
+.cyber-panel--danger::before {
+  background: linear-gradient(90deg,
+    transparent, var(--neon-magenta) 20%, var(--neon-magenta) 80%, transparent);
+}
+.cyber-panel--danger .cyber-panel__title {
+  color: var(--neon-magenta);
+  text-shadow: 0 0 8px rgba(255, 42, 109, 0.5);
+}
+
+/* 状态点（小圆点 + 辉光，配合面板使用） */
+.cyber-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.cyber-status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+}
+.cyber-status--warn::before { background: var(--neon-yellow); box-shadow: 0 0 8px var(--neon-yellow); }
+.cyber-status--err::before  { background: var(--neon-magenta); box-shadow: 0 0 8px var(--neon-magenta); }
+.cyber-status--idle::before { background: var(--text-muted); box-shadow: none; }

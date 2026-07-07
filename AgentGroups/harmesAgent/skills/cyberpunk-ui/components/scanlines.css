@@ -1,0 +1,54 @@
+/* =========================================================
+   Cyberpunk UI · Scanlines 全局扫描线覆盖层
+   用法：在 <body> 上加 class="scanlines"
+   或单独某个区块加 class="scanlines scanlines--local"
+   ========================================================= */
+
+.scanlines {
+  position: relative;
+}
+
+.scanlines::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background:
+    /* 横向扫描线 */
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.18) 0px,
+      rgba(0, 0, 0, 0.18) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    /* 整体偏色（轻微 RGB 分离感） */
+    linear-gradient(
+      180deg,
+      rgba(0, 240, 255, 0.02),
+      rgba(255, 42, 109, 0.02)
+    );
+  mix-blend-mode: overlay;
+}
+
+/* 局部扫描线（用于单个面板，不要做全屏） */
+.scanlines--local::after {
+  position: absolute;
+  z-index: 1;
+}
+
+/* 一条移动中的亮扫描线（高级感，慎用） */
+.scanlines--sweep::before {
+  content: '';
+  position: fixed;
+  left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(180deg,
+    transparent,
+    rgba(0, 240, 255, 0.08) 50%,
+    transparent);
+  pointer-events: none;
+  z-index: 9998;
+  animation: scan-move 6s linear infinite;
+}

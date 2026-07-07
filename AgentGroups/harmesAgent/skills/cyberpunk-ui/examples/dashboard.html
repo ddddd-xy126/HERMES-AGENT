@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>HERMES // CONTROL DECK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../animations.css">
+  <link rel="stylesheet" href="../components/buttons.css">
+  <link rel="stylesheet" href="../components/panels.css">
+  <link rel="stylesheet" href="../components/glitch.css">
+  <link rel="stylesheet" href="../components/scanlines.css">
+
+  <style>
+    .layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .topbar h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 0.18em;
+    }
+    .topbar .meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .metric {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+      margin: 8px 0;
+    }
+    .metric--danger {
+      color: var(--neon-magenta);
+      text-shadow: 0 0 10px rgba(255, 42, 109, 0.6);
+    }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .log {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: var(--bg-base);
+      padding: 12px;
+      border-left: 2px solid var(--neon-cyan);
+      max-height: 180px;
+      overflow: auto;
+    }
+    .log span.ok  { color: var(--neon-green); }
+    .log span.err { color: var(--neon-magenta); }
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: var(--neon-cyan);
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+  </style>
+</head>
+<body class="scanlines scanlines--sweep">
+  <div class="layout">
+
+    <header class="topbar">
+      <h1 class="glitch glitch--active" data-text="HERMES">HERMES</h1>
+      <div class="meta">
+        SESSION&nbsp;ID&nbsp;//&nbsp;0x4F2A·9C&nbsp;&nbsp;|&nbsp;&nbsp;UPLINK&nbsp;<span class="anim-blink">●</span>
+      </div>
+    </header>
+
+    <section class="grid">
+
+      <article class="cyber-panel">
+        <header class="cyber-panel__header">
+          <h3 class="cyber-panel__title">AGENTS ONLINE</h3>
+          <span class="cyber-panel__id">SYS://AGT</span>
+        </header>
+        <div class="cyber-panel__body">
+          <div class="metric">12 / 16</div>
+          <span class="cyber-status">ALL NOMINAL</span>
+        </div>
+      </article>
+
+      <article class="cyber-panel">
+        <header class="cyber-panel__header">
+          <h3 class="cyber-panel__title">TASK QUEUE</h3>
+          <span class="cyber-panel__id">SYS://TQ</span>
+        </header>
+        <div class="cyber-panel__body">
+          <div class="metric">37</div>
+          <span class="cyber-status cyber-status--warn">3 PENDING REVIEW</span>
+        </div>
+      </article>
+
+      <article class="cyber-panel cyber-panel--danger">
+        <header class="cyber-panel__header">
+          <h3 class="cyber-panel__title">ALERTS</h3>
+          <span class="cyber-panel__id">SYS://ALR</span>
+        </header>
+        <div class="cyber-panel__body">
+          <div class="metric metric--danger">02</div>
+          <span class="cyber-status cyber-status--err">RATE LIMIT @ amazon</span>
+        </div>
+      </article>
+
+    </section>
+
+    <section style="margin-top: 24px;">
+      <article class="cyber-panel">
+        <header class="cyber-panel__header">
+          <h3 class="cyber-panel__title">LIVE LOG</h3>
+          <span class="cyber-panel__id">tail -f /var/log/hermes</span>
+        </header>
+        <div class="cyber-panel__body">
+          <div class="log">
+            <div>[02:14:08] <span class="ok">OK</span> agent.amazon.search → 142 items</div>
+            <div>[02:14:11] <span class="ok">OK</span> agent.github.commit → pushed 3 files</div>
+            <div>[02:14:19] <span class="err">ERR</span> agent.linkedin.scrape → 429 rate-limited</div>
+            <div>[02:14:24] <span class="ok">OK</span> cron.weekly.refresh → done in 4.2s</div>
+            <div>[02:14:25] booting next worker<span class="cursor anim-blink"></span></div>
+          </div>
+          <div class="row">
+            <button class="cyber-btn">EXECUTE</button>
+            <button class="cyber-btn cyber-btn--ghost">PAUSE</button>
+            <button class="cyber-btn cyber-btn--danger">ABORT</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+  </div>
+</body>
+</html>

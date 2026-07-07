@@ -1,0 +1,192 @@
+# Cyberpunk — Hermes Dashboard theme
+#
+# 安装：复制本文件到 ~/.hermes/dashboard-themes/cyberpunk.yaml
+# 然后访问 http://localhost:9119/api/dashboard/plugins/rescan
+# 在 dashboard 顶部主题切换器选择 "Cyberpunk"。
+#
+# 颜色与 cyberpunk-ui skill 的 tokens.css 保持一致：
+#   --neon-cyan    #00f0ff   主色
+#   --neon-magenta #ff2a6d   辅色（CTA / 危险）
+#   --bg-base      #05060a   纯黑底
+#   --bg-panel     #0d0f1a   面板
+
+name: cyberpunk
+label: "Cyberpunk"
+description: "深黑底 + 青/品红霓虹 + 切角 HUD + 扫描线"
+
+# ------- palette (3-layer) -------
+palette:
+  background: "#05060a"
+  midground: "#e6f1ff"
+  foreground:
+    hex: "#ffffff"
+    alpha: 0
+  warmGlow: "rgba(255, 42, 109, 0.18)"
+  noiseOpacity: 0.5
+
+# ------- typography -------
+typography:
+  fontSans: '"Rajdhani", "Orbitron", "PingFang SC", "Microsoft YaHei", sans-serif'
+  fontMono: '"JetBrains Mono", "Fira Code", "Share Tech Mono", ui-monospace, monospace'
+  fontDisplay: '"Orbitron", "Rajdhani", "Impact", sans-serif'
+  fontUrl: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+  baseSize: "14px"
+  lineHeight: "1.55"
+  letterSpacing: "0.03em"
+
+# ------- layout -------
+layout:
+  radius: "0"
+  density: "compact"
+
+layoutVariant: standard
+
+# ------- assets -------
+# 透视网格 + 径向辉光复合背景
+assets:
+  bg: "radial-gradient(ellipse at 20% 0%, rgba(0,240,255,0.10), transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(255,42,109,0.10), transparent 50%), linear-gradient(180deg, #05060a 0%, #0a0d18 100%)"
+  hero: ""
+  crest: ""
+
+# ------- component chrome -------
+componentStyles:
+  card:
+    clipPath: "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))"
+    background: "linear-gradient(180deg, rgba(13,15,26,0.92) 0%, rgba(5,6,10,0.96) 100%)"
+    boxShadow: "inset 0 0 0 1px rgba(0,240,255,0.18), 0 8px 32px rgba(0,0,0,0.6), 0 0 24px -10px rgba(0,240,255,0.45)"
+  header:
+    background: "linear-gradient(180deg, rgba(10,12,22,0.95) 0%, rgba(5,6,10,0.92) 100%)"
+  sidebar:
+    background: "linear-gradient(180deg, rgba(10,12,22,0.92) 0%, rgba(5,6,10,0.9) 100%)"
+  tab:
+    clipPath: "polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)"
+  backdrop:
+    backgroundSize: "cover"
+    backgroundPosition: "center"
+    fillerOpacity: "1"
+    fillerBlendMode: "normal"
+
+# ------- color overrides -------
+colorOverrides:
+  primary: "#00f0ff"
+  primaryForeground: "#05060a"
+  accent: "#ff2a6d"
+  accentForeground: "#05060a"
+  ring: "#00f0ff"
+  success: "#39ff14"
+  warning: "#f9f002"
+  destructive: "#ff2a6d"
+  border: "rgba(0, 240, 255, 0.22)"
+
+# ------- customCSS -------
+customCSS: |
+  /* 全局扫描线（仅在本主题激活时） */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.18) 0 1px,
+      transparent 1px 3px
+    );
+    mix-blend-mode: overlay;
+  }
+
+  /* 一条缓慢下移的亮扫描带 */
+  body::after {
+    content: "";
+    position: fixed;
+    left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(0, 240, 255, 0.06) 50%,
+      transparent
+    );
+    pointer-events: none;
+    z-index: 99;
+    animation: cyber-scan 7s linear infinite;
+  }
+  @keyframes cyber-scan {
+    0%   { transform: translateY(-120%); }
+    100% { transform: translateY(110vh); }
+  }
+
+  /* 主标题/Logo 加微弱辉光 */
+  h1, h2, .text-primary {
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+  }
+
+  /* 按钮：主按钮霓虹辉光 + 短暂 hover 加亮 */
+  button[data-variant="default"],
+  button.bg-primary,
+  .btn-primary {
+    text-shadow: 0 0 6px currentColor;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.35),
+                inset 0 0 12px rgba(0, 240, 255, 0.12);
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
+  }
+  button[data-variant="default"]:hover,
+  button.bg-primary:hover,
+  .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6),
+                inset 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* 危险按钮换成品红霓虹 */
+  button[data-variant="destructive"],
+  .btn-destructive {
+    text-shadow: 0 0 6px currentColor;
+    box-shadow: 0 0 12px rgba(255, 42, 109, 0.4),
+                inset 0 0 12px rgba(255, 42, 109, 0.15);
+  }
+
+  /* 输入框 focus 霓虹环 */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: none !important;
+    border-color: #00f0ff !important;
+    box-shadow: 0 0 0 1px #00f0ff, 0 0 14px rgba(0, 240, 255, 0.5) !important;
+  }
+
+  /* 选中文本 */
+  ::selection {
+    background: #00f0ff;
+    color: #05060a;
+  }
+
+  /* 减弱动画偏好兜底 */
+  @media (prefers-reduced-motion: reduce) {
+    body::after { animation: none; display: none; }
+  }
+
+  /* ---- 强行覆盖 xterm 嵌入终端的灰绿色背景 ----
+     hermes 把 #0d2626 写死在 React 编译产物里（chat 页面外层 div + xterm 容器），
+     这里用高优先级把它压成纯黑，再让 xterm canvas 透明一半透出黑底，避免视觉违和。 */
+  .hermes-chat-xterm-host,
+  .hermes-chat-xterm-host > div,
+  .hermes-chat-xterm-host .xterm,
+  .hermes-chat-xterm-host .xterm-viewport,
+  .hermes-chat-xterm-host .xterm-screen {
+    background-color: #05060a !important;
+  }
+  /* 终端外的"聊天区"卡片本身（包住 xterm 那个绿框）也压黑 */
+  [class*="chat"][class*="page"] [style*="background-color: rgb(13, 38, 38)"],
+  [class*="chat"] [style*="background-color: rgb(13, 38, 38)"],
+  [style*="background-color: rgb(13, 38, 38)"],
+  [style*="background-color:#0d2626"],
+  [style*="background-color: #0d2626"] {
+    background-color: #05060a !important;
+  }
+  /* 给终端容器加一圈赛博青边 + 内辉光 */
+  .hermes-chat-xterm-host {
+    box-shadow: inset 0 0 0 1px rgba(0,240,255,0.3),
+                0 0 24px -8px rgba(0,240,255,0.5);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  }

@@ -1,0 +1,122 @@
+# Cyberpunk — Hermes CLI/TUI skin
+#
+# 安装：复制本文件到 ~/.hermes/skins/cyberpunk.yaml
+#       然后在 ~/.hermes/config.yaml 里设置：
+#         display:
+#           skin: cyberpunk
+#       重启 dashboard 即可
+#
+# 控制 hermes --tui 中所有彩色输出：figlet banner / 提示符 / spinner /
+# 状态栏 / 工具调用前缀 / response box 边框 等。
+#
+# 风格：深黑底 + 青色 (#00f0ff) 主色 + 品红 (#ff2a6d) 强调 + 毒绿成功色
+
+name: cyberpunk
+description: "Cyberpunk — neon cyan + magenta on void black"
+
+colors:
+  # ---- banner（启动时那块大 ASCII art） ----
+  banner_border: "#ff2a6d"   # 边框：品红
+  banner_title:  "#00f0ff"   # figlet 主色 → 取代原来那块巨大的黄色
+  banner_accent: "#ff2a6d"   # "Available Tools / Skills" 这种小标题
+  banner_dim:    "#4a5070"   # 分隔符、次级标签
+  banner_text:   "#e6f1ff"   # 工具名/技能名正文
+
+  # ---- 通用 UI ----
+  ui_accent: "#00f0ff"
+  ui_label:  "#bd00ff"   # 紫色 label，跟主色拉开层次
+  ui_ok:     "#39ff14"   # 毒绿
+  ui_error:  "#ff2a6d"
+  ui_warn:   "#f9f002"   # 霓虹黄
+
+  # ---- 输入区 ----
+  prompt:           "#00f0ff"
+  input_rule:       "#ff2a6d"
+  response_border:  "#00f0ff"
+
+  # ---- 状态栏（底部那条） ----
+  status_bar_bg:        "#05060a"
+  status_bar_text:      "#e6f1ff"
+  status_bar_strong:    "#00f0ff"
+  status_bar_dim:       "#4a5070"
+  status_bar_good:      "#39ff14"
+  status_bar_warn:      "#f9f002"
+  status_bar_bad:       "#ff2a6d"
+  status_bar_critical:  "#ff2a6d"
+
+  # ---- session 标签 ----
+  session_label:  "#00f0ff"
+  session_border: "#4a5070"
+
+  # ---- 自动补全菜单 ----
+  completion_menu_bg:               "#0d0f1a"
+  completion_menu_current_bg:       "#1a1f3a"
+  completion_menu_meta_bg:          "#0d0f1a"
+  completion_menu_meta_current_bg:  "#1a1f3a"
+
+# ---- spinner ----
+spinner:
+  waiting_faces:
+    - "[//]"
+    - "[||]"
+    - "[\\\\]"
+    - "[--]"
+    - "(◉_◉)"
+    - "(>_<)"
+  thinking_faces:
+    - "{0xA1}"
+    - "{0xC3}"
+    - "{0xF7}"
+    - "{...}"
+    - "[--]"
+  thinking_verbs:
+    - "compiling neural net"
+    - "decrypting payload"
+    - "jacking in"
+    - "tracing dataflow"
+    - "spinning up shards"
+    - "patching kernel"
+    - "ICE breaking"
+    - "syncing the matrix"
+    - "deploying daemons"
+  wings:
+    - ["⟪//", "//⟫"]
+    - ["⟪◢", "◣⟫"]
+    - ["⟪>", "<⟫"]
+    - ["⟪::", "::⟫"]
+
+# ---- 品牌文案 ----
+branding:
+  agent_name: "Hermes // Cyberdeck"
+  welcome: "// CYBERDECK ONLINE // type /help to list commands //"
+  goodbye: "// jack out. stay frosty. //"
+  response_label: " ▶ HERMES "
+  prompt_symbol: "▶ "
+  help_header: "// AVAILABLE COMMANDS //"
+
+# ---- 工具调用前缀 ----
+tool_prefix: "▌"
+
+# ---- banner_logo: 启动时大 figlet（用 rich 标记着色） ----
+# 取代原来巨大的 HERMES-AGENT 黄色字
+banner_logo: |
+  [bold #00f0ff]██╗  ██╗███████╗██████╗ ███╗   ███╗███████╗███████╗[/]
+  [bold #00f0ff]██║  ██║██╔════╝██╔══██╗████╗ ████║██╔════╝██╔════╝[/]
+  [bold #00d8ff]███████║█████╗  ██████╔╝██╔████╔██║█████╗  ███████╗[/]
+  [bold #ff2a6d]██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══╝  ╚════██║[/]
+  [bold #ff2a6d]██║  ██║███████╗██║  ██║██║ ╚═╝ ██║███████╗███████║[/]
+  [bold #bd00ff]╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝[/]
+  [dim #4a5070]              // n e t r u n n e r   c y b e r d e c k //[/]
+
+# ---- banner_hero: 副标题旁的 ASCII 装饰 ----
+banner_hero: |
+  [#00f0ff]      ▄▄▄▄▄▄▄▄▄▄▄[/]
+  [#00f0ff]    ▄█████████████▄[/]
+  [#00d8ff]   ████ ▄▄▄▄▄▄▄ ████[/]
+  [#00d8ff]  ████ █ ◉   ◉ █ ████[/]
+  [#bd00ff]  ████ █   ▼   █ ████[/]
+  [#bd00ff]  ████ █  ───  █ ████[/]
+  [#ff2a6d]   ████ ▀▀▀▀▀▀▀ ████[/]
+  [#ff2a6d]    ▀█████████████▀[/]
+  [#ff2a6d]       █ ▌▐▌▐▌ █[/]
+  [dim #4a5070]      // jack in //[/]
