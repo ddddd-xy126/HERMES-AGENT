@@ -4,7 +4,7 @@
 #   2) 重启 Hermes Gateway，让 LLM 提示词加载新内容
 #
 # 何时跑：
-#   - 在 d:\webDevFrontProject\AgentGroups\BrowserHarness\agent-workspace\domain-skills\ 下
+#   - 在 d:\project\hermes-agent\AgentGroups\BrowserHarness\agent-workspace\domain-skills\ 下
 #     新增/重命名了一个 site 目录或 .md 文件
 #   - 改了一个 .md 的 H1 标题
 #   - 升级了 BrowserHarness 上游 SKILL.md

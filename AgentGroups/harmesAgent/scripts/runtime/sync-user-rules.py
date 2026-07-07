@@ -6,7 +6,7 @@
 from pathlib import Path
 import sys
 
-SRC_DIR = Path("/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/persona")
+SRC_DIR = Path("/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/persona")
 DST = Path.home() / ".hermes" / "memories" / "USER.md"
 
 if not DST.exists():

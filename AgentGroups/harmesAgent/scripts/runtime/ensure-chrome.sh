@@ -19,7 +19,7 @@ if curl -sS --max-time 3 "$URL" >/dev/null 2>&1; then
 fi
 
 echo "==> Chrome unreachable; launching via PowerShell interop"
-PS_SCRIPT='d:\webDevFrontProject\AgentGroups\harmesAgent\scripts\runtime\windows\launch-automation-chrome.ps1'
+PS_SCRIPT='d:\project\hermes-agent\AgentGroups\harmesAgent\scripts\runtime\windows\launch-automation-chrome.ps1'
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$PS_SCRIPT" 2>&1 | sed 's/^/    [chrome] /'
 
 echo

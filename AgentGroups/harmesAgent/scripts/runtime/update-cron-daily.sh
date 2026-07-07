@@ -2,7 +2,7 @@
 # 更新 daily-51pm-tasks-840 cron 的 prompt 为最新版（仓库中的 prompts/cron-daily-tasks.md）
 set -e
 JOB_ID="${1:-}"
-PROMPT_FILE="/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/prompts/cron-daily-tasks.md"
+PROMPT_FILE="/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/prompts/cron-daily-tasks.md"
 HERMES="${HERMES:-$HOME/.local/bin/hermes}"
 
 if [ -z "$JOB_ID" ]; then

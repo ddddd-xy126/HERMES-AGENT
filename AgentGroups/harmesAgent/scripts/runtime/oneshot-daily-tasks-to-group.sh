@@ -7,7 +7,7 @@
 set -e
 WHEN="${1:-1m}"
 GROUP="${GROUP:-oc_16df917222758270fc04f009c6a17c71}"
-PROMPT_FILE="/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/prompts/cron-daily-tasks.md"
+PROMPT_FILE="/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/prompts/cron-daily-tasks.md"
 HERMES="${HERMES:-$HOME/.local/bin/hermes}"
 
 TMP="$(mktemp)"

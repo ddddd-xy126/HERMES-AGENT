@@ -39,6 +39,8 @@
 - [team_schedule_report.md](team_schedule_report.md) — 按部门 + 日期范围拉团队排期、输出「日期→人员」汇报（**只读**）
 - [checkTask_confirmTask.md](checkTask_confirmTask.md) — 任务模块：按部门 + 状态 + 周期筛任务，逐个点完工（写操作，提交前必须 ask user）
 - [create_daily_task.md](create_daily_task.md) — 新建当日任务/排期（**待补：流程未跑通，仅记录已知线索**）
+- [fill_workhour.md](fill_workhour.md) — 给任务填写工时/花费记录（写操作，已跑通；入口=任务列表 `button.workHour`，提交前 ask user）
+- [release_acceptance.md](release_acceptance.md) — 版本验收：依开发内容走流程找 BUG、边走边截图、出验收报告供发版技能使用（**必须走真实 UI 交互，禁止 Vue 直写代替操作**）
 
 ## 操作前置规则（强制）
 
@@ -54,7 +56,7 @@ candidates = [t for t in tabs if any(k in (t.get("url") or "") for k in host_key
 
 if candidates:
     # 2a. 命中：复用第一个；如果当前路由不是目标路由，再页内导航
-    tid = candidates[0]["id"]
+    tid = candidates[0]["target_id"]  # 注意：list_tabs 返回的 key 是 target_id / targetId，没有 "id"
     switch_tab(tid)
     target_path = "/task_panel/project_task"  # 按本次 skill 替换
     if target_path not in (candidates[0].get("url") or ""):

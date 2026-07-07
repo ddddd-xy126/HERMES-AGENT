@@ -5,7 +5,7 @@
 #   3) command_allowlist 增加兜底 "*"（个人机器自用）
 #
 # 用法（在 WSL Ubuntu 内执行）:
-#   bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/config-patch/apply-fixes.sh
+#   bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/config-patch/apply-fixes.sh
 set -euo pipefail
 
 CFG="$HOME/.hermes/config.yaml"
@@ -20,10 +20,10 @@ import sys, re, pathlib
 p = pathlib.Path(sys.argv[1])
 text = p.read_text()
 
-# (a) approvals.mode -> auto
+# (a) approvals.mode -> 'off'（注意：合法值只有 manual/smart/off，'auto' 是非法值会回退 manual；off 必须带引号防 YAML 布尔化）
 text = re.sub(
     r"(\napprovals:\n(?:[ \t]+[^\n]*\n)*?[ \t]+mode:[ \t]*)([^\n]+)",
-    r"\1auto",
+    r"\1'off'",
     text,
     count=1,
 )

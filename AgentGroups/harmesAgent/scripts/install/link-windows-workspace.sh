@@ -11,7 +11,7 @@
 set -e
 
 WSL_WS="$HOME/Developer/browser-harness/agent-workspace"
-WIN_WS="/mnt/d/webDevFrontProject/AgentGroups/BrowserHarness/agent-workspace"
+WIN_WS="/mnt/d/project/hermes-agent/AgentGroups/BrowserHarness/agent-workspace"
 
 if [ ! -d "$WIN_WS" ]; then
   echo "ERROR: Windows workspace not found at $WIN_WS"; exit 1

@@ -11,7 +11,7 @@ JOB_NAME="weekly-schedule-900"
 SCHEDULE="0 9 * * *"
 DELIVER="feishu:oc_4acae77f85894216ca236042a336df17"
 WORKDIR="$HOME/Developer/browser-harness/agent-workspace"
-PROMPT_FILE="/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/prompts/cron-weekly-schedule.md"
+PROMPT_FILE="/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/prompts/cron-weekly-schedule.md"
 HERMES="${HERMES:-$HOME/.local/bin/hermes}"
 
 if [ -z "$JOB_ID" ]; then

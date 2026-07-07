@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-PROMPT_FILE="/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/prompts/oneshot-cosmic-brief.md"
+PROMPT_FILE="/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/prompts/oneshot-cosmic-brief.md"
 RUN_AT="${1:-2026-05-09T20:00:00}"
 TARGET_DELIVER="${DELIVER:-feishu:oc_4acae77f85894216ca236042a336df17}"
 HERMES="${HERMES:-$HOME/.local/bin/hermes}"

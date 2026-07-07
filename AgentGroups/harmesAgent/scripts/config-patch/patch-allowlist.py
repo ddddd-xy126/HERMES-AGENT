@@ -6,9 +6,9 @@ s = open(p, encoding='utf-8').read()
 new = '''command_allowlist:
 - browser-harness *
 - browser-harness
-- bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh
-- bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/*.sh
-- bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/**/*.sh
+- bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh
+- bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/*.sh
+- bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/**/*.sh
 '''
 s2 = re.sub(r'command_allowlist:\n(- [^\n]+\n)+', new, s, count=1)
 if s2 == s:

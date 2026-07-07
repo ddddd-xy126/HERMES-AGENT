@@ -8,7 +8,7 @@ JOB_NAME="morning-wakeup-750"
 SCHEDULE="50 7 * * *"
 DELIVER="feishu:oc_4acae77f85894216ca236042a336df17"
 WORKDIR="$HOME/Developer/browser-harness/agent-workspace"
-PROMPT_FILE="/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/prompts/cron-morning-wakeup.md"
+PROMPT_FILE="/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/prompts/cron-morning-wakeup.md"
 HERMES="${HERMES:-$HOME/.local/bin/hermes}"
 
 if [ -z "$JOB_ID" ]; then

@@ -26,7 +26,18 @@ hermes-agent/
 - `scripts/config-patch/` 修改 `~/.hermes/config.yaml` 的工具
 - `config/` env / yaml / USER.md 配置模板
 - `prompts/` 注入 LLM 的 cron prompt 与 memory rule
-- `docs/` 产品文档、使用教程、WebUI 使用说明
+- `docs/` 产品文档、使用教程、WebUI 使用说明、Windows 原生部署记录
+
+本机采用**双实例部署**，分工如下：
+
+| | WSL 份（`~/.hermes`） | Windows 原生份（`%LOCALAPPDATA%\hermes`） |
+|---|---|---|
+| 飞书机器人 | ✅ 负责 | ❌ 不接（避免双实例抢消息） |
+| 写代码 / 跑脚本 | ✅ | ✅ |
+| CDP 遥控 Chrome | ✅（BrowserHarness） | ✅（自带 Playwright） |
+| 操作 Windows 桌面（cua-driver：点鼠标 / 打字 / 截屏 / 开软件） | ❌ | ✅ |
+
+Windows 份部署过程与踩坑见 [Windows原生部署记录](AgentGroups/docs/Windows原生部署记录.md)。
 
 日常启动：
 
@@ -68,6 +79,9 @@ npm install -g hermes-web-ui && hermes-web-ui start
 2. 在 WSL 中安装 Hermes：`bash AgentGroups/harmesAgent/scripts/install/install-hermes.sh`
 3. 配置 `~/.hermes/.env` 与 `~/.hermes/config.yaml`（参考 [config 模板](AgentGroups/harmesAgent/config/)）
 4. 启动 gateway 与 dashboard（见上方"日常启动"）
+5. （可选）Windows 原生再装一份以获得桌面控制能力：PowerShell 执行
+   `iex (irm https://hermes-agent.nousresearch.com/install.ps1)`，再装 cua-driver，
+   详见 [Windows原生部署记录](AgentGroups/docs/Windows原生部署记录.md)
 
 首次部署完整流程见 [使用教程](AgentGroups/harmesAgent/docs/使用教程.md) 与 [产品文档](AgentGroups/harmesAgent/docs/产品文档.md)。
 

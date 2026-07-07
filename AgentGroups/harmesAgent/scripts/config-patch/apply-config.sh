@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 把 N1nKey 配置写入 ~/.hermes/.env 和 ~/.hermes/config.yaml
-# 在 WSL 中运行：bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/config-patch/apply-config.sh <API_KEY>
+# 在 WSL 中运行：bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/config-patch/apply-config.sh <API_KEY>
 # 注意：API Key 通过参数 $1 传入，避免硬编码
 set -e
 

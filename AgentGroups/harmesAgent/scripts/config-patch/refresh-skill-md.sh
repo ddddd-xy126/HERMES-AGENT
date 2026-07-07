@@ -60,7 +60,7 @@ SKILL_INDEX="$(mktemp)"
     done
   fi
   echo
-  echo "**任务关键词路由**：看到 \"51pm\" / \"本周任务\" / \"组员任务\" / \"完工\" / \"工时\" / \"日报\" → 立刻 cat 对应 md，按里面的步骤执行，不要重新摸索。"
+  echo "**任务关键词路由**：看到 \"51pm\" / \"本周任务\" / \"组员任务\" / \"完工\" / \"工时\" / \"日报\" / \"验收\" / \"发版\" / \"看板\" / \"测试环境\" → 立刻 cat 对应 md，按里面的步骤执行，不要重新摸索。51PM 测试环境地址、登录方式、Tab 复用规则都在 \`domain-skills/51pm/README.md\`，**任何 51PM 任务先读它，不要猜 URL、不要用 Hermes 原生 browser 工具（会拦内网 IP），一律用 browser-harness**。"
   echo
   echo "如果没匹配的 skill，按上游 SKILL.md 的 \"screenshot first\" 工作流自己探索；探索完务必写回 \`domain-skills/<site>/<task>.md\`。"
   echo
@@ -76,9 +76,11 @@ preamble_top = """## 本机部署说明（爱马仕Lucky on WSL）
 
 **🚨 绝对禁令：永远不要让用户在 PowerShell 里手动跑 chrome 启动命令。这是上一版的兜底方式，已废弃。**
 
+**🚨 绝对禁令 2：永远不要自己启动 WSL 本地的 Playwright/Chromium（`~/.cache/ms-playwright/...`）来干浏览器活。** 那是个无登录态的空白浏览器，打开内网系统只会看到登录页，毫无意义。浏览器活的唯一正确通道是 `browser-harness`（连 Windows 上的 automation Chrome，登录态已持久化）。连不上就跑 ensure-chrome.sh 自愈，自愈失败就停下来告诉用户，**不许换裸浏览器兜底**。
+
 **Chrome 连不上时的唯一正确动作**：你自己跑
 ```bash
-bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh
+bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh
 ```
 这个脚本通过 WSL→Windows interop 自己拉起 Chrome（幂等：在跑就秒退）。等到打印 `✓ Chrome reachable` 后再重试 `browser-harness -c '...'`。
 
@@ -109,7 +111,7 @@ print(page_info())
 如果 `browser-harness` 报 `BU_CDP_URL ... unreachable` / 任何连接失败 / daemon 起不来，**立刻自己跑**：
 
 ```bash
-bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh
+bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh
 ```
 
 这个脚本会通过 WSL→Windows interop 自己拉起 automation Chrome（幂等：已在跑就秒退）。等它打印 `✓ Chrome reachable` 后**再重试**原命令。**不要让用户手动跑 PowerShell**，那是上一版的兜底方式，已废弃。

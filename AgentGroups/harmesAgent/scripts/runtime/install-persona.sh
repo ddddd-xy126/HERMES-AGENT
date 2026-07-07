@@ -8,8 +8,8 @@
 # 幂等：每次重写 SOUL.md（带 .bak.<时间戳> 备份）；不动 MEMORY.md（保留 Hermes 运维条目）。
 set -e
 
-PERSONA_SRC="/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/persona/persona.md"
-LIFERAG_SRC="/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/persona/life-rag.md"
+PERSONA_SRC="/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/persona/persona.md"
+LIFERAG_SRC="/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/persona/life-rag.md"
 SOUL="$HOME/.hermes/SOUL.md"
 
 [ -f "$PERSONA_SRC" ] || { echo "missing: $PERSONA_SRC"; exit 1; }
@@ -29,8 +29,8 @@ ts="$(date +%Y%m%d-%H%M%S)"
 echo "[install-persona] SOUL.md updated  ($(wc -c < "$SOUL") bytes, $(wc -l < "$SOUL") lines)"
 
 # 重启 gateway 让 SOUL.md 缓存彻底刷新
-if [ -x /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/_restart-gateway.sh ]; then
-  bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/_restart-gateway.sh || true
+if [ -x /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/_restart-gateway.sh ]; then
+  bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/_restart-gateway.sh || true
 fi
 
 echo
