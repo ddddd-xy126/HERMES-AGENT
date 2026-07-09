@@ -41,6 +41,8 @@
 - [create_daily_task.md](create_daily_task.md) — 新建当日任务/排期（**待补：流程未跑通，仅记录已知线索**）
 - [fill_workhour.md](fill_workhour.md) — 给任务填写工时/花费记录（写操作，已跑通；入口=任务列表 `button.workHour`，提交前 ask user）
 - [release_acceptance.md](release_acceptance.md) — 版本验收：依开发内容走流程找 BUG、边走边截图、出验收报告供发版技能使用（**必须走真实 UI 交互，禁止 Vue 直写代替操作**）
+- [release_notes.md](release_notes.md) — 发版内容撰写规范（分类判断表/强度规则/价值红黑榜；落笔前必须逐条自查）；定妆图直接引用 `agent-workspace/acceptance/{版本}/final-*.jpg`
+- [entry_map.md](entry_map.md) — **入口地图（全 skill 共享）**：实测确认的功能入口 + 坑备注 + 页面等待锚点；找入口先查这里，新确认的入口必须回填
 
 ## 操作前置规则（强制）
 
