@@ -24,8 +24,8 @@ harmesAgent/
 每天打开电脑后，在 PowerShell 跑：
 
 ```powershell
-wsl -d Ubuntu -- bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/start-gateway.sh
-wsl -d Ubuntu -- bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/start-dashboard.sh
+wsl -d Ubuntu -- bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/start-gateway.sh
+wsl -d Ubuntu -- bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/start-dashboard.sh
 ```
 
 或者直接双击根目录 `StartHermesLucky.exe`（自动拉起两个并打开 http://localhost:9119）。
@@ -45,7 +45,7 @@ wsl -d Ubuntu -- bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/
 参见 [docs/产品文档.md](docs/产品文档.md) 与 [docs/使用教程.md](docs/使用教程.md)。简化版：
 
 1. `wsl --install -d Ubuntu` → 重启 → 设置 Linux 用户。
-2. WSL 中：`bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/install/install-hermes.sh`
+2. WSL 中：`bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/install/install-hermes.sh`
 3. 配置 `~/.hermes/.env`（参考 [config/env.template](config/env.template)）和 `~/.hermes/config.yaml`（参考 [config/config.template.yaml](config/config.template.yaml)）
 4. 启动：见上面"快速启动"
 

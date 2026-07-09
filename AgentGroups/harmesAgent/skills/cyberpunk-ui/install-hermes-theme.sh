@@ -52,7 +52,7 @@ else
 fi
 
 # ---- 4) 重启 Dashboard（skin 在 hermes --tui 启动时才加载，必须重启） ----
-DASH_SH="/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/start-dashboard.sh"
+DASH_SH="/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/start-dashboard.sh"
 if [ -f "$DASH_SH" ]; then
   echo "↻ 重启 Dashboard…"
   bash "$DASH_SH" || true

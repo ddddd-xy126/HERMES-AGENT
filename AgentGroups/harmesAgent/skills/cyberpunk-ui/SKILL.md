@@ -107,13 +107,13 @@ Hermes Dashboard 自带主题系统：把 YAML 丢进 `~/.hermes/dashboard-theme
 
 ```bash
 # WSL Ubuntu 内执行
-bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/skills/cyberpunk-ui/install-hermes-theme.sh
+bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/skills/cyberpunk-ui/install-hermes-theme.sh
 ```
 
 或 Windows PowerShell 一行：
 
 ```powershell
-wsl -d Ubuntu bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/skills/cyberpunk-ui/install-hermes-theme.sh
+wsl -d Ubuntu bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/skills/cyberpunk-ui/install-hermes-theme.sh
 ```
 
 脚本会：

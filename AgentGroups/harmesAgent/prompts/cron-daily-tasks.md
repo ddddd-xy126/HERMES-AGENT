@@ -12,7 +12,7 @@
 
 ## 执行步骤
 
-1. **先 preflight**：跑 `bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh`，等到 `✓ Chrome reachable`。失败就把错误贴出来停下。
+1. **先 preflight**：跑 `bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh`，等到 `✓ Chrome reachable`。失败就把错误贴出来停下。
 2. **Tab 复用**：按 `~/Developer/browser-harness/agent-workspace/domain-skills/51pm/README.md` 的「操作前置规则」执行——先 `list_tabs(include_chrome=False)` 检查是否已有 `51pm.51aes.com` 开头的 tab，命中就 `switch_tab` 并用 `window.location.href = '/task_panel/project_task'` 页内导航；未命中才 `new_tab("http://51pm.51aes.com:771/task_panel/project_task")`。**不允许**用测试环境 `10.67.8.183`。
 3. 跑 skill `~/Developer/browser-harness/agent-workspace/domain-skills/51pm/checkTask_confirmTask.md`，**只执行查询/读取章节（步骤 0~4）**，参数：
    - `env=prod`

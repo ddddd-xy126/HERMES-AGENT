@@ -2,7 +2,7 @@
 # 浏览器自动化（BrowserHarness）规则 — 强制执行
 
 调 `browser-harness` 报 "BU_CDP_URL ... unreachable" 或任何连接失败时：**立刻自己跑**
-`bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh`，等 `✓ Chrome reachable` 后再重试原命令。
+`bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh`，等 `✓ Chrome reachable` 后再重试原命令。
 
 **绝对禁止**让用户手动跑 PowerShell / `_launch-automation-chrome.ps1` — 那是已废弃的兜底。
 只有 `_ensure-chrome.sh` 也失败（30s 超时）时，才告诉用户排查。

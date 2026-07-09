@@ -38,4 +38,4 @@
 - **其它站点经验**：写到对应的 `domain-skills/<site>/*.md`，没有就先新建目录，但站点名要规范（小写连字符，如 `51pm` `g2` `producthunt`）。
 - **绝对禁止**写到 `~/.hermes/skills/`（productivity / creative / etc）下——那是 Hermes 内置 skill 仓库，重装即丢、用户看不到、不进 git。
 - **绝对禁止**在 skill 中硬编码个人 PII（姓名、工号、部门具体路径）。这些应作为运行时参数传入，skill 只描述流程模板。
-- **绝对禁止**在 skill 中写已废弃的 PowerShell `_launch-automation-chrome.ps1` 路径。Chrome 自愈走 `bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh`。
+- **绝对禁止**在 skill 中写已废弃的 PowerShell `_launch-automation-chrome.ps1` 路径。Chrome 自愈走 `bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh`。

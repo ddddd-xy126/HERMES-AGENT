@@ -10,7 +10,7 @@
 
 ```
 使用工具 terminal：
-  command: bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh
+  command: bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh
   cwd: /home/huazhonghao
   blocking: true
 ```
@@ -29,7 +29,7 @@
 
 ## 执行步骤
 
-1. **Preflight**：用工具 `terminal` 跑 `bash /mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh`，等到 `✓ Chrome reachable`。失败贴错误停下。
+1. **Preflight**：用工具 `terminal` 跑 `bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime/ensure-chrome.sh`，等到 `✓ Chrome reachable`。失败贴错误停下。
 2. **Tab 复用 + 查询 + 读数据**：用工具 `terminal` 跑 `browser-harness -c '<python>'`（同 daily-51pm-tasks 任务的做法）。Python 代码里按 `~/Developer/browser-harness/agent-workspace/domain-skills/51pm/README.md` 的「操作前置规则」执行——先 `list_tabs(include_chrome=False)` 找已有 `51pm.51aes.com` tab，命中 `switch_tab` + `js("window.location.href='/schedule/schedule_table'")` 页内导航；不命中才 `new_tab("http://51pm.51aes.com:771/schedule/schedule_table")`。**禁止**用测试环境 `10.67.8.183`。3. 参数（传给 skill `~/Developer/browser-harness/agent-workspace/domain-skills/51pm/team_schedule_report.md`）：   - `env=prod`
    - `dept_titles=["Aes/工程与交付/项目交付/Web端开发"]`
    - `start_date` = 今天 ISO 日期（`YYYY-MM-DD`）

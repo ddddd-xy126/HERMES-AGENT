@@ -13,7 +13,7 @@ import webbrowser
 
 # 注意：使用 WSL 内的 POSIX 路径
 WSL_DISTRO = "Ubuntu"
-SCRIPT_DIR_WSL = "/mnt/d/webDevFrontProject/AgentGroups/harmesAgent/scripts/runtime"
+SCRIPT_DIR_WSL = "/mnt/d/project/hermes-agent/AgentGroups/harmesAgent/scripts/runtime"
 GATEWAY_SCRIPT = f"{SCRIPT_DIR_WSL}/start-gateway.sh"
 DASHBOARD_SCRIPT = f"{SCRIPT_DIR_WSL}/start-dashboard.sh"
 DASHBOARD_URL = "http://localhost:9119"
