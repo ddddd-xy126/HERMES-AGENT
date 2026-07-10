@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>51PM V2.2.4 验收报告</title>
+  <title>acceptance-report</title>
   <style>
     html {
       color: #1a1a1a;
@@ -167,12 +167,18 @@
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
+  <style>
+    body {
+      max-width: 72em;
+    }
+    table {
+      display: table;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">51PM V2.2.4 验收报告</h1>
-</header>
-<h1 id="pm-v2.2.4-验收报告">51PM V2.2.4 验收报告</h1>
+<h1 id="51pm-v224-验收报告">51PM V2.2.4 验收报告</h1>
 <ul>
 <li>验收时间：2026-07-08 ~ 2026-07-09</li>
 <li>环境：测试环境（开发环境水印已确认）</li>
@@ -188,7 +194,7 @@
 🐛。</p>
 </blockquote>
 <hr />
-<h2 id="原始验收需求开发者提交的本周开发内容">0.
+<h2 id="0-原始验收需求开发者提交的本周开发内容">0.
 原始验收需求（开发者提交的本周开发内容）</h2>
 <blockquote>
 <p>帮我验收 V2.2.4，在测试环境。本周开发内容如下：</p>
@@ -205,8 +211,8 @@
 <p>对应关系：需求 1 → §1，需求 2 → §2，需求 3 → §3，需求 4 →
 §4a（日常管理需求恢复创建）+ §4b（根需求禁建任务）。</p>
 <hr />
-<h2 id="任务创建人员组群-批量创建会议工时-通过">1. 任务创建：人员组群 +
-批量创建会议工时 — ✅ 通过</h2>
+<h2 id="1-任务创建人员组群--批量创建会议工时--white_check_mark-通过">1.
+任务创建：人员组群 + 批量创建会议工时 — ✅ 通过</h2>
 <ul>
 <li>入口：「我的工作台 → 组群配置」+「非项目 → 会议工时 →
 需求『团队会议』→ 创建任务(悬停) → 多人通用任务 → 从组群导入」</li>
@@ -231,7 +237,8 @@
 <li>亮点：新建组群即时出现在导入下拉；有效人数联动计数、任务名自动生成体验良好</li>
 <li>【发版素材】任务创建支持人员组群管理，可一键从组群导入成员批量创建会议工时任务，无需逐人添加，方便组织周会/月会等团队会议工时的统一录入。</li>
 </ul>
-<h2 id="项目概况测试报告文档上传下载-通过附体验问题">2.
+<h2
+id="2-项目概况测试报告文档上传下载--white_check_mark-通过附体验问题-warning">2.
 项目概况：测试报告文档上传/下载 — ✅ 通过（附体验问题 ⚠️）</h2>
 <ul>
 <li>入口：「项目 → 项目列表 →
@@ -259,8 +266,8 @@ markdown」提示。
 <li>截图：final-02-测试文档上传后.jpg、final-02c-测试文档打开成功.jpg</li>
 <li>【发版素材】项目概况新增测试报告文档管理，与接口说明书一致的上传/下载方式，测试报告在线查看，方便项目测试交付物的统一归档与查阅。</li>
 </ul>
-<h2 id="排期表按项目查询直显人员-通过">3. 排期表：按项目查询直显人员 —
-✅ 通过</h2>
+<h2 id="3-排期表按项目查询直显人员--white_check_mark-通过">3.
+排期表：按项目查询直显人员 — ✅ 通过</h2>
 <ul>
 <li>入口：「排期 → 排期表」顶部「搜索项目」筛选</li>
 <li><strong>UI 流程</strong> ✅：日期范围
@@ -279,10 +286,10 @@ markdown」提示。
 <li>截图：final-03-排期表按项目查询直显.jpg</li>
 <li>【发版素材】排期表查询指定项目时自动过滤无排期人员，该项目的排期人员首屏直接可见，无需再往下翻找，项目排期查看效率大幅提升。</li>
 </ul>
-<h2 id="非项目任务日常管理需求恢复创建-根需求禁建任务">4.
+<h2 id="4-非项目任务日常管理需求恢复创建--根需求禁建任务">4.
 非项目任务：日常管理需求恢复创建 + 根需求禁建任务</h2>
-<h3 id="a.-日常管理下可正常创建需求-通过">4a. 日常管理下可正常创建需求 —
-✅ 通过</h3>
+<h3 id="4a-日常管理下可正常创建需求--white_check_mark-通过">4a.
+日常管理下可正常创建需求 — ✅ 通过</h3>
 <ul>
 <li>入口：「非项目 → 日常管理 → 创建需求(悬停) → F自由需求」</li>
 <li><strong>UI 流程</strong> ✅：填写需求名称/描述 →
@@ -293,7 +300,7 @@ markdown」提示。
 #14823 下</li>
 <li>截图：final-04-日常管理创建需求.jpg</li>
 </ul>
-<h3 id="b.-前端限制根需求创建任务-bugui-层通过接口层未拦截">4b.
+<h3 id="4b-前端限制根需求创建任务--bug-bugui-层通过接口层未拦截">4b.
 前端限制根需求创建任务 — 🐛 BUG（UI 层通过，接口层未拦截）</h3>
 <ul>
 <li><p><strong>UI 层</strong> ✅：</p>
@@ -324,33 +331,48 @@ pid=14823）</li>
 <li><strong>复现</strong>：POST <code>add_task</code>，body 中
 <code>pid=14823</code>（或任意根需求 id）→ 观察是否 code:0 成功</li>
 </ul></li>
-<li><p>🐛 <strong>接口层边界测试（一般 + 轻微）</strong>： | 用例 | 请求
-| 返回 | 判定 | |—|—|—|—| | 不存在的父需求 pid=99999999 | add_task |
-<code>code:50 "sql: no rows in result set"</code> | 拦截
-✅，但<strong>报错体把底层 SQL
-错误直接抛给前端</strong>（轻微信息泄露，建议改为业务化文案） | |
-空任务名称 | add_task name=“” |
-<code>code:51 "非项目需求下的任务名称不能为空"</code> | 正确拦截 ✅ | |
-负数计划工时 plan_hour=-5 | add_task | <code>code:0</code>
-成功，任务『V224边界-负工时(可删除)』(#22516) 落库
-<code>task_hour=0 / plan_hour=-5</code> | 🐛
-<strong>轻微（前端已挡）</strong> —
+<li><p>🐛 <strong>接口层边界测试（一般 + 轻微）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>用例</th>
+<th>请求</th>
+<th>返回</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不存在的父需求 pid=99999999</td>
+<td>add_task</td>
+<td><code>code:50 "sql: no rows in result set"</code></td>
+<td>拦截 ✅，但<strong>报错体把底层 SQL
+错误直接抛给前端</strong>（轻微信息泄露，建议改为业务化文案）</td>
+</tr>
+<tr>
+<td>空任务名称</td>
+<td>add_task name=""</td>
+<td><code>code:51 "非项目需求下的任务名称不能为空"</code></td>
+<td>正确拦截 ✅</td>
+</tr>
+<tr>
+<td>负数计划工时 plan_hour=-5</td>
+<td>add_task</td>
+<td><code>code:0</code> 成功，任务『V224边界-负工时(可删除)』(#22516)
+落库 <code>task_hour=0 / plan_hour=-5</code></td>
+<td>🐛 <strong>轻微（前端已挡）</strong> —
 前端数字步进器限制、正常操作填不了负数，此问题仅在绕过前端直调接口时出现；task_hour
-被归零但 plan_hour 负值直接入库，属后端缺兜底校验，建议防御性补 ≥0 校验
-|</p></li>
+被归零但 plan_hour 负值直接入库，属后端缺兜底校验，建议防御性补 ≥0
+校验</td>
+</tr>
+</tbody>
+</table></li>
 <li><p>【发版素材】修复部分成员在『2026日常管理』根需求下误建任务导致数据异常的问题，异常数据已转移；排期表与非项目创建任务时前端已限制根需求不可选，只能在子需求下建任务，日常管理需求恢复正常创建。（注：接口层后端校验建议一并补上，见验收
 BUG）</p></li>
 </ul>
 <hr />
-<h2 id="bug-汇总供开发处理">🐛 BUG 汇总（供开发处理）</h2>
+<h2 id="bug-bug-汇总供开发处理">🐛 BUG 汇总（供开发处理）</h2>
 <table>
-<colgroup>
-<col style="width: 1%" />
-<col style="width: 9%" />
-<col style="width: 3%" />
-<col style="width: 65%" />
-<col style="width: 19%" />
-</colgroup>
 <thead>
 <tr>
 <th>#</th>
@@ -408,7 +430,7 @@ pid，绕过前端可在根需求『2026日常管理』(#14823) 下建任务（�
 资源管理器地址栏可直接粘贴访问）：
 <code>\\wsl.localhost\Ubuntu\home\dengxinyu\Developer\browser-harness\agent-workspace\acceptance\V2.2.4\</code></p>
 <hr />
-<h2 id="发版内容v2.2.4-真实定稿">发版内容（V2.2.4 真实定稿）</h2>
+<h2 id="发版内容v224-真实定稿">发版内容（V2.2.4 真实定稿）</h2>
 <blockquote>
 <p>用户人工定稿版。分类、影响强度、措辞以此为准。</p>
 </blockquote>
@@ -432,7 +454,7 @@ pid，绕过前端可在根需求『2026日常管理』(#14823) 下建任务（�
 
 2.「任务创建」：
 排期与非项目创建任务时，仅支持在子需求下创建任务，规范需求选择范围，界面通过树状关系分清需求之间的关系，防止创建任务时错选需求；</code></pre>
-<h3 id="交付前需人工确认验收独有发现未纳入上方对外发版内容">⚠️
+<h3 id="warning-交付前需人工确认验收独有发现未纳入上方对外发版内容">⚠️
 交付前需人工确认（验收独有发现，未纳入上方对外发版内容）</h3>
 <p>以下为接口层验收发现，属后端防御性问题、正常前端操作不受影响，<strong>是否修复由开发判断，通常不写入对外发版</strong>：</p>
 <ol type="1">
@@ -445,7 +467,7 @@ pid，绕过前端可在根需求『2026日常管理』(#14823) 下建任务（�
 </ol>
 <hr />
 <h2
-id="发版内容按-51pm-release-notes-规范逐条套用生成-仅覆盖本次验收的-4-项">发版内容（按
+id="发版内容按-51pm-release-notes-规范逐条套用生成--仅覆盖本次验收的-4-项">发版内容（按
 51pm-release-notes 规范逐条套用生成 · 仅覆盖本次验收的 4 项）</h2>
 <blockquote>
 <p>本节由验收报告 + 发版 skill 生成，已逐条对照 skill 判断表：①②
@@ -459,12 +481,6 @@ id="发版内容按-51pm-release-notes-规范逐条套用生成-仅覆盖本次�
 </blockquote>
 <h3 id="发布记录表补充行">发布记录表（补充行）</h3>
 <table>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
 <thead>
 <tr>
 <th>版本号</th>

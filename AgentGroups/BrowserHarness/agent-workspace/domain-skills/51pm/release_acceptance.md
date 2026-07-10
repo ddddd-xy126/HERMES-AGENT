@@ -136,24 +136,35 @@ final-{功能名}.jpg                    # 定妆图：每个功能 1 张，功�
 - 原因：当前账号无 DTA 管理员权限，看不到模型数据看板明细
 - 已验部分：入口存在、页面能打开（截图 03-xxx-入口.png）
 
+## 交付前需人工确认（汇总）
+{🐛/⚠️ 项汇总表：# | 事项 | 建议}
+
+## 发版内容（初稿，待人工定稿）
+{第 5 步产出后回填到这里——发版内容不落独立文件，必须写进本报告（2026-07-09/07-10 用户约定），这样 md 和 html 是同一份完整交付物}
+
 ## 交接给发版技能
-定妆图清单 + 各功能【发版素材】段，已可直接作为发版技能（同目录 release_notes.md）的输入。
+定妆图清单 + 各功能【发版素材】段 + 上方「发版内容」初稿，可直接作为发版定稿的输入。
 ```
 
-**报告写完后自动转 HTML**（pandoc 3.7 已装在 WSL，零 token 成本）：
+**报告转 HTML**（pandoc 3.7 已装在 WSL，零 token 成本）。⚠️ **执行时机：第 5 步「发版内容」写回报告之后**，不要第 4 步写完 md 就转——否则 html 里缺发版内容节（2026-07-10 用户反馈的真实翻车）：
 
 ```bash
-cd {output_dir} && pandoc acceptance-report.md -o acceptance-report.html --standalone --metadata title="51PM {version} 验收报告" --metadata lang=zh-CN
+cd {output_dir} && printf '<style>\n  body { max-width: 72em; }\n  table { display: table; width: 100%%; }\n</style>\n' > _report-style.html && pandoc acceptance-report.md -f gfm -t html5 --standalone -H _report-style.html --metadata title="51PM {version} 验收报告" --metadata lang=zh-CN -o acceptance-report.html
 ```
 
+- 必须带 `-H _report-style.html`：pandoc 默认模板正文宽度写死 36em，太窄，表格挤成一条
+- md 里列表项内嵌表格时，表格前**必须空一行**，否则 gfm 解析会把表格压平成带竖线的段落文字
 - 图片是相对路径引用，html 与截图同目录，双击即可带图浏览；对外发送时把整个 `{output_dir}` 目录打包
 - 转换失败不阻断流程，md 仍是主产物，报告里提一句即可
+- 发版内容后续被人工定稿修改回 md 后，重跑同一条命令重转 html 即可
 
 **回填入口表（强制，报告交付前做，不等用户提醒）**：本轮验收中**新确认的入口**和**纠正的入口**，立即按回填规则写入同目录 [entry_map.md](entry_map.md)（全 51pm skill 共享的入口地图）；同页面踩到的新坑以 ⚠️ 备注写进对应行。每轮验收都执行。
 
-### 第 5 步：产出发版内容（若报告里要写「发版内容」节，或用户要求写发版）
+### 第 5 步：产出发版内容（**默认必做**，2026-07-10 用户反馈固化：验收报告写完后直接生成发版内容初稿，不要等用户追问；存在 🐛/⚠️ 待确认项时照样产出，正文按"已生效部分"的口径写，并附「交付前需人工确认」表说明哪些措辞待确认后调整）
 
 > ⚠️ **强制（2026-07-09 用户明确要求）：写发版内容时必须真正读取发版 skill（**同目录 [release_notes.md](release_notes.md)**）并逐条套用，不许读完凭感觉写。** 用户会拿真实定稿版比对，分类/强度判错会被当场发现。
+
+**产出位置（2026-07-10 固化）**：写入 `acceptance-report.md` 的「## 发版内容（初稿，待人工定稿）」节，**不落独立文件、不只在消息里发一遍**；写完后再执行第 4 步的 pandoc 命令转 html——验收报告和发版内容初稿是**同一份 html** 交付。
 
 落笔前必须逐条对照的 4 个 skill 判断点（这些正是 2026-07-09 我判错的地方）：
 

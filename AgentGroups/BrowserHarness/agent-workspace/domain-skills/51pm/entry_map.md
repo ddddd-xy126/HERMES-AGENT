@@ -23,6 +23,13 @@
 | 项目测试文档 | 「项目 → 项目列表 → 点项目名进项目概况」右侧信息栏 | 位于『定制接口文档』与『行业接口文档』之间 |
 | 排期表搜索项目 | 「排期 → 排期表」顶部「搜索项目」筛选 | |
 | 自由需求 | 「非项目 → 日常管理 → 创建需求(悬停) → F自由需求」 | |
+| 项目递交（项目内） | 「项目 → 项目详情 → 二级菜单『项目递交』」，路由 `/project/project_publish?projectId=N` | V2.2.5 新增；⚠️顶部按时/超时/延期/待递交数字块是纯统计不可点击筛选；「最新/最早」排序可用；接口 `project_publish/get_list?project_id=N`，keywords 参数按项目名精确匹配 |
+| 项目需求页 | 「项目 → 项目详情 → 二级菜单『项目需求』」，路由 `/project/demand?projectId=N` | ⚠️二级菜单 el-menu-item 点击不路由（V2.2.5 实测），直接 `window.location.href` 导航最稳；需求描述列「查看详情」按钮首次点击常无响应需点第二次 |
+| 需求拆分（拆解为任务） | 项目需求页 → 需求行操作列 el-icon-menu 按钮 → 需求拆解弹窗（BatchCreateDialog 两步向导） | 任务选项面板=task-options-panel-popover；⚠️拆解任务工时总和>父需求标准工时会被 preSubmit 拦（toast 偶发不弹，表现为点了没反应）；默认带任务2/3/4空占位卡，用 .bcd-tab__del 删除 |
+| 创建任务-快速建组群 | 多人通用任务弹窗 → 「从组群导入」popover → 『立即管理』链接 → 就地弹「组群配置」弹窗 | V2.2.5 新增；⚠️嵌套弹窗里成员 el-select 坐标点击常不展开，用 vm：`sv.options.find(o=>o.label==="姓名")` + `sv.handleOptionSelect(o)`（单选，选一个点一次「加入」），最后「保存成员」 |
+| 我的任务（日历） | 「我的地盘 → 左侧栏『我的任务』」，路由 `/my_board/main/task` | ⚠️直接 location.href 会被重定向回 main，必须点左侧菜单进入；日历格 class `tc-cell`（今天 is-today）；V2.2.5 起点任务项直接弹花费填写弹窗，右侧 tc-panel__body 侧栏保留 |
+| 填写工时（含Ctrl+V贴图） | 任务列表行 button.workHour（CDP click 可能无效，用原生 btn.click()）→ 工时记录弹窗 → 「填写工时」 | 上传区组件 UploadImages.vue，V2.2.5 支持粘贴图片（合成 ClipboardEvent+DataTransfer 可自动化验证）；多任务选项任务每子项有独立 .option-hour-input 工时框+描述 textarea，仅工时>0 的子项必填描述 |
+| 申请发包（模型外包） | 「项目 → 项目详情 → 『模型外包』→ 申请发包」按钮（CDP click 无效，用原生 click） | 发包类型是**多选** el-select（vm `$emit("input",[val])` 才生效）；列表有「全部/内部自制」tab；接口 `outsource/create_package` / `get_package_list?sj_num=` |
 
 ## 页面等待锚点（待回填）
 
