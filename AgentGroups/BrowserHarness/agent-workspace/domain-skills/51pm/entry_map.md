@@ -24,12 +24,13 @@
 | 排期表搜索项目 | 「排期 → 排期表」顶部「搜索项目」筛选 | |
 | 自由需求 | 「非项目 → 日常管理 → 创建需求(悬停) → F自由需求」 | |
 | 项目递交（项目内） | 「项目 → 项目详情 → 二级菜单『项目递交』」，路由 `/project/project_publish?projectId=N` | V2.2.5 新增；⚠️顶部按时/超时/延期/待递交数字块是纯统计不可点击筛选；「最新/最早」排序可用；接口 `project_publish/get_list?project_id=N`，keywords 参数按项目名精确匹配 |
-| 项目需求页 | 「项目 → 项目详情 → 二级菜单『项目需求』」，路由 `/project/demand?projectId=N` | ⚠️二级菜单 el-menu-item 点击不路由（V2.2.5 实测），直接 `window.location.href` 导航最稳；需求描述列「查看详情」按钮首次点击常无响应需点第二次 |
-| 需求拆分（拆解为任务） | 项目需求页 → 需求行操作列 el-icon-menu 按钮 → 需求拆解弹窗（BatchCreateDialog 两步向导） | 任务选项面板=task-options-panel-popover；⚠️拆解任务工时总和>父需求标准工时会被 preSubmit 拦（toast 偶发不弹，表现为点了没反应）；默认带任务2/3/4空占位卡，用 .bcd-tab__del 删除 |
-| 创建任务-快速建组群 | 多人通用任务弹窗 → 「从组群导入」popover → 『立即管理』链接 → 就地弹「组群配置」弹窗 | V2.2.5 新增；⚠️嵌套弹窗里成员 el-select 坐标点击常不展开，用 vm：`sv.options.find(o=>o.label==="姓名")` + `sv.handleOptionSelect(o)`（单选，选一个点一次「加入」），最后「保存成员」 |
+| 项目需求页 | 「项目 → 项目详情 → 二级菜单『项目需求』」，路由 `/project/demand?projectId=N` | ⚠️二级菜单点击不路由的坑 V2.2.5-copilot 轮**未复现**（真实点击直接路由成功），`location.href` 导航仍可作兑底；需求描述列「查看详情」按钮首次点击常无响应需点第二次；创建需求性质选「其他(会议、产研)」后名称变模板下拉(含「项目会议」) |
+| 需求拆分（拆解为任务） | 项目需求页 → 需求行操作列 el-icon-menu 按钮 → 需求拆解弹窗（BatchCreateDialog 两步向导） | 任务选项面板=task-options-panel-popover；⚠️拆解任务工时总和>父需求标准工时会被 preSubmit 拦（toast 偶发不弹，表现为点了没反应）；默认带任务2/3/4空占位卡，用 .bcd-tab__del 删除；⚠️el-icon-menu 固定列双份渲染，第一个不可见，要过滤 offsetWidth>0；任务选项面板「搜索任务选项」只搜当前分组（岗位专业/管理会议两分组要先切）；⚠️Escape 会关掉整个向导弹窗且不保留已填内容 |
+| 创建任务-快速建组群 | 多人通用任务弹窗 → 「从组群导入」popover → 『立即管理』链接 → 就地弹「组群配置」弹窗 | V2.2.5；⚠️V2.2.5-copilot轮嵌套弹窗成员 el-select 真实点击一次就展开（旧 vm 兑底方案未用上）；坑：el-select 多选框外层 input 会被 tags 里 mini input 拦截，点 `.el-select__input.is-mini/.is-small` 才有效；新建组群后自动选中，加人→「加入」→「保存成员」两步都要点 |
 | 我的任务（日历） | 「我的地盘 → 左侧栏『我的任务』」，路由 `/my_board/main/task` | ⚠️直接 location.href 会被重定向回 main，必须点左侧菜单进入；日历格 class `tc-cell`（今天 is-today）；V2.2.5 起点任务项直接弹花费填写弹窗，右侧 tc-panel__body 侧栏保留 |
 | 填写工时（含Ctrl+V贴图） | 任务列表行 button.workHour（CDP click 可能无效，用原生 btn.click()）→ 工时记录弹窗 → 「填写工时」 | 上传区组件 UploadImages.vue，V2.2.5 支持粘贴图片（合成 ClipboardEvent+DataTransfer 可自动化验证）；多任务选项任务每子项有独立 .option-hour-input 工时框+描述 textarea，仅工时>0 的子项必填描述 |
-| 申请发包（模型外包） | 「项目 → 项目详情 → 『模型外包』→ 申请发包」按钮（CDP click 无效，用原生 click） | 发包类型是**多选** el-select（vm `$emit("input",[val])` 才生效）；列表有「全部/内部自制」tab；接口 `outsource/create_package` / `get_package_list?sj_num=` |
+| 申请发包（模型外包） | 「项目 → 项目详情 → 『模型外包』→ 申请发包」按钮，路由 `/project/outsource_project?projectId=N` | 发包类型是**多选** el-select；列表有「全部/内部自制」tab；接口 `outsource/create_package` / `get_package_list?sj_num=`；⚠️V2.2.5-copilot轮真实点击均有效（旧记录“CDP click 无效”未复现）；弹窗双份渲染会互遮，用快照 ref 或取最后一份可见 dialog |
+| 发包审核/立项（自制流程） | 模型外包列表每个发包的独立操作行「审核/立项/编辑」（每发包占数据行+标题行+操作行三行，索引会错位，直接找按钮文本） | V2.2.5；立项弹窗双模式：报价单拆解(仅外包) / 手动创建(可指派自制)；自制选「选择制作组(自制)」radio → 级联选部门/人(如 DTA资产/李润芝)；立项后状态变「制作中」+「自制」标签+「前往管理」+「打分」按钮；打分=「结项评价」弹窗(无完工任务时空态)；🐛发包详情页(`outsource_detail?outsourcePackageId=N`)「任务管理」按钮点击/悬停均无响应(V2.2.5-copilot轮发现) |
 
 ## 页面等待锚点（待回填）
 
