@@ -9,7 +9,6 @@ hermes-agent/
 ├── AgentGroups/
 │   ├── harmesAgent/       Hermes-Agent 部署工作区（Windows + WSL2 Ubuntu）
 │   ├── BrowserHarness/    浏览器自动化 CDP harness（LLM 直连真实浏览器）
-│   ├── hermes-web-ui/     Hermes Agent 的 Web 管理面板
 │   └── docs/              AI 应用落地相关概念文档
 └── aimashi/
     └── hermes-studio/     Hermes Agent 桌面应用 / 本地运行时 / Web 控制台
@@ -56,16 +55,6 @@ wsl -d Ubuntu -- bash /mnt/d/project/hermes-agent/AgentGroups/harmesAgent/script
 - `interaction-skills/` 交互技能文档（iframe、上传、下载、对话框等）
 
 详见 [BrowserHarness/README.md](AgentGroups/BrowserHarness/README.md)。
-
-### [hermes-web-ui](AgentGroups/hermes-web-ui/) — Web 管理面板
-
-Hermes Agent 的全功能 Web 管理面板：管理 AI 聊天会话、监控用量与成本、配置平台渠道、管理定时任务、浏览技能。
-
-```bash
-npm install -g hermes-web-ui && hermes-web-ui start
-```
-
-详见 [hermes-web-ui/README_zh.md](AgentGroups/hermes-web-ui/README_zh.md)。
 
 ### [hermes-studio](aimashi/hermes-studio/) — 桌面应用与控制台
 

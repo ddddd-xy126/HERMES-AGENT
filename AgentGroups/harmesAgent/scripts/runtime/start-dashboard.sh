@@ -14,8 +14,10 @@ if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
 fi
 
 # setsid + nohup 让进程脱离 WSL 终端会话
+# 绑定 127.0.0.1（而非 0.0.0.0）：新版 hermes 禁止无鉴权时绑定非回环地址；
+# WSL2 自带 localhost 转发，Windows 侧仍可用 http://localhost:9119 访问
 setsid nohup ~/.local/bin/hermes dashboard \
-  --host 0.0.0.0 \
+  --host 127.0.0.1 \
   --insecure \
   --no-open \
   --tui \
